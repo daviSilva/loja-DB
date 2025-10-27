@@ -66,31 +66,14 @@ const produtoModel = {
         console.log(rows);
         return rows;
     },
-    /**
-     * Função para deletar um produto pelo ID.
-     * Deleta o produto correspondente ao ID fornecido.
-     * 
-     * @param {id} id  parametro para o ID do produto a ser deletado
-     * @returns {Promise<object>} Retorna o resultado da deleção do produto.
-     * 
-     * @example
-     * const resultadoDelecao = await produtoModel.deletarProdutoporId(2);
-     * console.log(resultadoDelecao);
-     * //saida:
-     * { fieldCount: 0, affectedRows: 1, insertId: 0, info: '', serverStatus: 2, warningStatus: 0 } 
-     */
-    deletarProdutoporId: async (id) => {
-        const sql = 'DELETE FROM produtos WHERE id_profduto = ?';
-        const [rows] = await pool.query(sql, [id]);
-        return rows;
-    },
+    
     /**
      * Função para alterar um produto pelo ID.
      * Altera a descrição e o valor do produto correspondente ao ID fornecido.
      * @async
-     * @param {id} id parametro para o ID do produto a ser alterado
-     * @param {descricao} descricao parametro para a nova descrição do produto
-     * @param {valor} valor parametro para o novo valor do produto
+     * @param {Number} id parametro para o ID do produto a ser alterado
+     * @param {String} descricao parametro para a nova descrição do produto
+     * @param {Number} valor parametro para o novo valor do produto
      * @returns <Promise<object>} Retorna o resultado da alteração do produto.
      * 
      * @example
@@ -111,6 +94,34 @@ const produtoModel = {
     alterarProdutoPorId: async (id, descricao, valor) => {
         const sql = 'UPDATE produtos SET descricao = ?, valor = ? WHERE id_profduto = ?';
         const values = [descricao, valor, id];
+        const [rows] = await pool.query(sql, values);
+        return rows;
+    },
+    /**
+     * Função para deletar um produto pelo ID.
+     * Deleta o produto correspondente ao ID fornecido.
+     * @async
+     * @function DeletarProduto Função para deletar um produto pelo ID.
+     * @param {Number} pId parametro para o ID do produto a ser deletado 
+     * @returns <Promise<object>} Retorna o resultado da deleção do produto.
+     * 
+     * @example
+     * const resultadoDelecao = await produtoModel.DeletarProduto(2);
+     * console.log(resultadoDelecao);
+     * //saida:
+     * { 
+     *      fieldCount: 0,
+     *      affectedRows: 1,
+     *      insertId: 0,
+     *      info: '',
+     *      serverStatus: 2,
+     *      warningStatus: 0,
+     *      ChangedRows: 0 }
+     * >
+     */
+    DeletarProduto: async(pId) =>{
+        const sql = "DELETE DROM produtos WHERE id_produto = ?";
+        const values = [pId];
         const [rows] = await pool.query(sql, values);
         return rows;
     }

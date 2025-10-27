@@ -9,9 +9,10 @@ produtoRoutes.get('/produtos/:id_produto', produtoController.bucarPorId);
 
 produtoRoutes.post('/produtos', produtoController.incluirProduto);
 
-produtoRoutes.post('/deletar', produtoController.deleteProduto)
+//produtoRoutes.post('/deletar', produtoController.deleteProduto)
 
 produtoRoutes.put('/atualizar/:id_produto', produtoController.AtualizarProduto);
 
+produtoRoutes.delete('/produtos/:id_produto', produtoController.deleteProduto);
 
 module.exports = { produtoRoutes };

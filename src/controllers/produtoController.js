@@ -163,7 +163,7 @@ const produtoController = {
             }
             // mantem valores antigos se novos nao forem fornecidos
             const novaDescricao = descricao.trim() ?? produtoAtual[0].descricao;
-            
+
             const novoValor = valor ?? produtoAtual[0].valor;
             // executa a alteracao
             const resultado = await produtoModel.alterarProdutoPorId(id, novaDescricao, novoValor);
@@ -181,6 +181,59 @@ const produtoController = {
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: "Erro no servidor", messageError: error.message });
+        }
+    },
+    /**
+     * Função para deletar um produto pelo ID.
+     * Rota: DELETE /produtos/:id_produto
+     * @async
+     * @function DeletarProduto Função criada para deleter produtos pelo ID.
+     * @param {Request} req 
+     * @param {Response} res 
+     * @returns <promise<object>} Retorna o resultado da deleção do produto.
+     * @example
+     * // Requisição para deletar o produto com ID 2
+     * DELETE /produtos/2
+     * // Resposta HTTP
+     * {
+     *   "message": "Produto deletado com sucesso",
+     *   "resultado": { 
+     *      fieldCount: 0,
+     *      affectedRows: 1,
+     *      insertId: 0, info: '',
+     *      serverStatus: 2, 
+     *      warningStatus: 0,
+     *      ChangedRows: 0 } 
+     * }
+     * 
+     */
+    DeletarProduto: async (req, res) => {
+        try {
+            //checagem do id
+            const id = Number(req.params.id_produto);
+            if (!id || !Number.isInteger(id)) {
+                return res.status(400).json({ message: "ID inválido, forneça um indicador válido" })
+            }
+            //verifica se o produto existe
+            const produtoSelecionado = await produtoModel.selecaoPorId(id);
+            if (produtoSelecionado.length === 0) {
+                throw new Error("Produto não encontrado/ Registro não localizado");
+            }
+            //deleta o produto
+            else {
+                const resultado = await produtoModel.DeletarProduto(id);
+                if (resultado.affectedRows === 1) {
+                    return res.status(200).json({ message: "Produto deletado com sucesso", resultado: resultado })
+                }
+                //mensagem caso nao seja possivel deletar
+                else {
+                    throw new Error("Não foi possível deletar o produto");
+                }
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "erro no servidor", messageError: error });
+
         }
     }
 
