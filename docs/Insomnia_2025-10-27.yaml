@@ -1,0 +1,107 @@
+type: collection.insomnia.rest/5.0
+name: loja_Spricio
+meta:
+  id: wrk_04cf6e7127cd4f43a5ac24157e9874c6
+  created: 1760983676882
+  modified: 1760983676882
+  description: ""
+collection:
+  - url: localhost:8081/produtos
+    name: INCLUIR PRODUTO
+    meta:
+      id: req_1fd2270ee10549849cb503b056bd8151
+      created: 1760983691426
+      modified: 1761562117035
+      isPrivate: false
+      description: ""
+      sortKey: -1760983691426
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"descricao" : "Headset gamer senai",
+        	"valor" : 10
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8081/produtos
+    name: Mostrar tudo
+    meta:
+      id: req_b800610c6514439d82d4134d41cf196e
+      created: 1760987648623
+      modified: 1761562085161
+      isPrivate: false
+      description: ""
+      sortKey: -1760987648623
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8081/produtos/:id_profduto
+    name: PROCURAR POR ID
+    meta:
+      id: req_c3f7a74d5ae3481882a370470b22cb4f
+      created: 1761562616921
+      modified: 1761563108521
+      isPrivate: false
+      description: ""
+      sortKey: -1761562616921
+    method: GET
+    parameters:
+      - id: pair_e966793acff74a9c9b8aa5ea7cad7a4b
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    pathParameters:
+      - name: id_profduto
+        value: "1"
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_a0c8b7b9bc76c3c98dc24f18503d88a90c09c540
+    created: 1760983676902
+    modified: 1760983676902
+environments:
+  name: Base Environment
+  meta:
+    id: env_a0c8b7b9bc76c3c98dc24f18503d88a90c09c540
+    created: 1760983676889
+    modified: 1760983676889
+    isPrivate: false
