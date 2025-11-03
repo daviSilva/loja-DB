@@ -18,6 +18,7 @@ const clienteModel = {
         const sql = 'SELECT * FROM clientes';
         const [rows] = await pool.query(sql);
         return rows;
+
     },
     /**
      * Função que seleciona um cliente pelo ID
@@ -83,6 +84,27 @@ const clienteModel = {
         const values = [CPF];
         const [rows] = await pool.query(sql, values);
         return rows[0];
+    },
+
+    atualizaCliente: async (id, cliente_nome, CPF) => {
+        const sql = 'UPDATE clientes SET cliente_nome = ?, CPF = ? WHERE id_cliente = ?';
+        const values = [cliente_nome, CPF, id];
+        const [rows] = await pool.query(sql, values);
+        return rows;
+    },
+
+    deletarCliente: async (id) => {
+        const sql = 'DELETE FROM clientes WHERE id_cliente = ?';
+        const values = [id];
+        const [rows] = await pool.query(sql, values);
+        return rows;
+    },
+
+    alteraCliente: async (id, cliente_nome, CPF) => {
+        const sql = 'UPDATE clientes SET cliente_nome = ?, CPF = ? WHERE id_cliente = ?';
+        const values = [cliente_nome, CPF, id];
+        const [rows] = await pool.query(sql, values);
+        return rows;
     }
 
 

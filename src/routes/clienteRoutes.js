@@ -4,12 +4,15 @@ const { clienteController } = require('../controllers/clienteController');
 
 
 // Rota para obter todos os clientes
-clienteRoutes.get('/clientes', clienteController.selecionaTodosClientes);
+clienteRoutes.get('/clientes', clienteController.selecionaTodosClienteseID);
 // Rota para obter um cliente por ID
-clienteRoutes.get('/clientes/:id_cliente', clienteController.selecionarClientePorId);
+clienteRoutes.get('/clientes/id_cliente', clienteController.selecionaTodosClienteseID);
 
 // Rota para incluir um novo cliente
 clienteRoutes.post('/clientes', clienteController.inserirNovoCliente);
-
+// Rota para alterar um cliente por ID
+clienteRoutes.put('/clientes/:id_cliente', clienteController.alterarClientePorId);
+// Rota para deletar um cliente por ID
+clienteRoutes.delete('/clientes/:id_cliente', clienteController.deletarClientePorId);
 
 module.exports = { clienteRoutes };
