@@ -181,11 +181,11 @@ collection:
             store: true
           rebuildPath: true
       - url: http://localhost:8081/clientes/:id_cliente
-        name: New Request
+        name: PROCURA CLIENTE POR ID
         meta:
           id: req_de19786bcc694f5fb1c5babea7bebb0d
           created: 1762168101040
-          modified: 1762168148682
+          modified: 1762168815957
           isPrivate: false
           description: ""
           sortKey: -1762168101040
