@@ -1,4 +1,4 @@
-const pool = require('../../config/db');
+const pool = require('../config/db');
 
 const clienteModel = {
     /**
@@ -58,12 +58,32 @@ const clienteModel = {
      * "ChangedRows": 0 }
      * 
      */
-    inserirNovoCliente: async (nome, CPF) => {
+    inserirNovoCliente: async (cliente_nome, CPF) => {
         const sql = 'INSERT INTO clientes (cliente_nome, CPF) VALUES (?, ?)';
         const values = [cliente_nome, CPF];
         const [rows] = await pool.query(sql, values);
         return rows;
     },
+    /**
+     * função para selecionar um cliente pelo CPF
+     * Seleciona um cliente pelo CPF fornecido.
+     * @function selecionarClientePorCPF função para selecionar um cliente pelo CPF
+     * @param {Number} CPF parametro para CPF do cliente 
+     * @returns promise<object>} Retorna um objeto com os dados do cliente correspondente ao CPF fornecido.
+     * 
+     * @example
+     * const cliente = await clienteModel.selecionarClientePorCPF('123.456.789-00');
+     * console.log(cliente);
+     * //saida:
+     * { id_cliente: 1, cliente_nome: 'João Silva', CPF: '123.456.789-00'}
+     * 
+     */
+    selecionarClientePorCPF: async (CPF) => {
+        const sql = 'SELECT * FROM clientes WHERE CPF = ?';
+        const values = [CPF];
+        const [rows] = await pool.query(sql, values);
+        return rows[0];
+    }
 
 
 };
