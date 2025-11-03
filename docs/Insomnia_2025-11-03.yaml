@@ -1,0 +1,249 @@
+type: collection.insomnia.rest/5.0
+name: loja_Spricio
+meta:
+  id: wrk_04cf6e7127cd4f43a5ac24157e9874c6
+  created: 1760983676882
+  modified: 1760983676882
+  description: ""
+collection:
+  - name: PRODUTOS
+    meta:
+      id: fld_2c87135bc48c488f9ea0fe0f596cc431
+      created: 1761583619104
+      modified: 1761583784926
+      sortKey: -1761583619910.25
+      description: ""
+    children:
+      - url: localhost:8081/produtos
+        name: INCLUIR PRODUTO
+        meta:
+          id: req_1fd2270ee10549849cb503b056bd8151
+          created: 1760983691426
+          modified: 1761583906745
+          isPrivate: false
+          description: ""
+          sortKey: -1761583841061
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"descricao" : "Curso muito legal de Relações Sociais",
+            	"valor" : 230
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8081/produtos
+        name: Mostrar tudo
+        meta:
+          id: req_b800610c6514439d82d4134d41cf196e
+          created: 1760987648623
+          modified: 1761583840904
+          isPrivate: false
+          description: ""
+          sortKey: -1761583840861
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8081/produtos/:id_profduto
+        name: PROCURAR POR ID
+        meta:
+          id: req_c3f7a74d5ae3481882a370470b22cb4f
+          created: 1761562616921
+          modified: 1761583866329
+          isPrivate: false
+          description: ""
+          sortKey: -1761583840761
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id_profduto
+            value: "7"
+      - url: http://localhost:8081/atualizar/:id_produto
+        name: ALTERAR PRODUTO
+        meta:
+          id: req_25f6aee301f14f52b95a6cc9e96dcce8
+          created: 1761567603460
+          modified: 1761583899431
+          isPrivate: false
+          description: ""
+          sortKey: -1761583840661
+        method: PUT
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            	"descricao" : "                                                     GTX 550                                                                                           ",
+            	"valor" : 256.99
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id_produto
+            value: "3"
+      - url: localhost:8081/produtos/:id_profduto
+        name: DELETAR POR ID
+        meta:
+          id: req_cbdbce0c1830465388cc750fec77fe8e
+          created: 1761581393035
+          modified: 1761583904710
+          isPrivate: false
+          description: ""
+          sortKey: -1761583840961
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id_profduto
+            value: "7"
+  - name: CLIENTE
+    meta:
+      id: fld_3c43abc6833b431e9f2405df6a5d7246
+      created: 1761583915008
+      modified: 1762167203920
+      sortKey: -1761583915008
+      description: ""
+    children:
+      - url: http://localhost:8081/clientes
+        name: SELECIONA TODOS CLIENTES
+        meta:
+          id: req_4bfd1df1867b460b97b82d0310836286
+          created: 1762167214063
+          modified: 1762168096358
+          isPrivate: false
+          description: ""
+          sortKey: -1762167216984
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8081/clientes/:id_cliente
+        name: New Request
+        meta:
+          id: req_de19786bcc694f5fb1c5babea7bebb0d
+          created: 1762168101040
+          modified: 1762168148682
+          isPrivate: false
+          description: ""
+          sortKey: -1762168101040
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id_cliente
+            value: "1"
+      - url: http://localhost:8081/clientes
+        name: incluir novo cliente
+        meta:
+          id: req_8b761c82bfef4ac9ba23c68b63a69551
+          created: 1762168160795
+          modified: 1762168536799
+          isPrivate: false
+          description: ""
+          sortKey: -1762168160795
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"cliente_nome" : "Pinto A.R.G.S",
+            	"CPF" : 46165252850
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_a0c8b7b9bc76c3c98dc24f18503d88a90c09c540
+    created: 1760983676902
+    modified: 1760983676902
+environments:
+  name: Base Environment
+  meta:
+    id: env_a0c8b7b9bc76c3c98dc24f18503d88a90c09c540
+    created: 1760983676889
+    modified: 1760983676889
+    isPrivate: false
