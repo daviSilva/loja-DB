@@ -85,11 +85,11 @@ const clienteController = {
 
     deletarClientePorId: async (req, res) => {
         try {
-            const id = Number(req.params.id_cliente);
+            const id = Number(req.body.id_cliente);
             if (!id || !Number.isInteger(id)) {
                 return res.status(400).json({ message: "ID inválido, forneça um id valido" });
             }   
-            const resultado = await clienteModel.deletarClientePorId(id);
+            const resultado = await clienteModel.deletarCliente(id);
             res.status(200).json({ message: "cliente deletado com sucesso", resultado });
         } catch (error) {
             console.error(error);

@@ -13,6 +13,6 @@ clienteRoutes.post('/clientes', clienteController.inserirNovoCliente);
 // Rota para alterar um cliente por ID
 clienteRoutes.put('/clientes/:id_cliente', clienteController.alterarClientePorId);
 // Rota para deletar um cliente por ID
-clienteRoutes.delete('/clientes/:id_cliente', clienteController.deletarClientePorId);
+clienteRoutes.delete('/clientes', clienteController.deletarClientePorId);
 
 module.exports = { clienteRoutes };

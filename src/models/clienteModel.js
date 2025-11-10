@@ -92,14 +92,25 @@ const clienteModel = {
         const [rows] = await pool.query(sql, values);
         return rows;
     },
-
+    /**
+     * Função que deleta o clienten pelo id
+     * @param {Number} id 
+     * @returns 
+     */
     deletarCliente: async (id) => {
         const sql = 'DELETE FROM clientes WHERE id_cliente = ?';
         const values = [id];
         const [rows] = await pool.query(sql, values);
         return rows;
     },
-
+    /**
+     * função para atualizar/ alterar um cliente do banco de dados.
+     * @param {Number} id 
+     * @param {String} cliente_nome 
+     * @param {Number} CPF 
+     * @returns promise<object>} Retor
+     * 
+     */
     alteraCliente: async (id, cliente_nome, CPF) => {
         const sql = 'UPDATE clientes SET cliente_nome = ?, CPF = ? WHERE id_cliente = ?';
         const values = [cliente_nome, CPF, id];

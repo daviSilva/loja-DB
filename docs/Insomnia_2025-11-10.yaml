@@ -160,15 +160,21 @@ collection:
       description: ""
     children:
       - url: http://localhost:8081/clientes
-        name: SELECIONA TODOS CLIENTES
+        name: SELECIONA TODOS CLIENTES E SELEÇÃO POR ID
         meta:
           id: req_4bfd1df1867b460b97b82d0310836286
           created: 1762167214063
-          modified: 1762168096358
+          modified: 1762772381579
           isPrivate: false
           description: ""
           sortKey: -1762167216984
         method: GET
+        parameters:
+          - id: pair_163ecbae00784a589f26a4d6cc43be24
+            name: id_cliente
+            value: ""
+            description: ""
+            disabled: false
         headers:
           - name: User-Agent
             value: insomnia/11.6.2
@@ -180,17 +186,57 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:8081/clientes/:id_cliente
-        name: PROCURA CLIENTE POR ID
+      - url: http://localhost:8081/clientes
+        name: incluir novo cliente
         meta:
-          id: req_de19786bcc694f5fb1c5babea7bebb0d
-          created: 1762168101040
-          modified: 1762168815957
+          id: req_8b761c82bfef4ac9ba23c68b63a69551
+          created: 1762168160795
+          modified: 1762771974177
           isPrivate: false
           description: ""
-          sortKey: -1762168101040
-        method: GET
+          sortKey: -1762168160795
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"cliente_nome" : "Izaias",
+            	"CPF" : 46765752350
+            }
         headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8081/clientes/:id_cliente
+        name: ALTERA CLIENTES
+        meta:
+          id: req_2265c5946f914acb9cac58ca4c88af30
+          created: 1762195233347
+          modified: 1762771985679
+          isPrivate: false
+          description: ""
+          sortKey: -1762195233347
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"cliente_nome" : "dcs2",
+            	"CPF" : 12366778897
+            	
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
           - name: User-Agent
             value: insomnia/11.6.2
         settings:
@@ -205,22 +251,27 @@ collection:
           - name: id_cliente
             value: "1"
       - url: http://localhost:8081/clientes
-        name: incluir novo cliente
+        name: DELETA CLIENTES
         meta:
-          id: req_8b761c82bfef4ac9ba23c68b63a69551
-          created: 1762168160795
-          modified: 1762168536799
+          id: req_5fb56a23dc254188a8433d841c17f317
+          created: 1762195393499
+          modified: 1762772474512
           isPrivate: false
           description: ""
-          sortKey: -1762168160795
-        method: POST
+          sortKey: -1762195233447
+        method: DELETE
         body:
           mimeType: application/json
           text: |-
             {
-            	"cliente_nome" : "Pinto A.R.G.S",
-            	"CPF" : 46165252850
+            	"id_cliente" : 4
             }
+        parameters:
+          - id: pair_d1f890c1fa7940ed8498c6a8393a96c2
+            name: id_cliente
+            value: "4"
+            description: ""
+            disabled: false
         headers:
           - name: Content-Type
             value: application/json
